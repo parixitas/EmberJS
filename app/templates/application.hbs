@@ -1,0 +1,27 @@
+<section class="todoapp">
+  <header class="header">
+    <h1><u>Task List</u></h1>
+    <input
+      class="new-todo"
+      onkeydown={{action "createTodo"}}
+      placeholder="What next needs to be done?"
+      autofocus
+    >
+  </header>
+  {{outlet}}
+  {{#if (gt model.length 0)}}
+    <footer class="footer">
+      <span class="todo-count"><strong>{{remaining.length}}</strong> {{pluralize "item" remaining.length}} left</span>
+      <ul class="filters">
+        <li>{{#link-to "index" activeClass="selected"}}All{{/link-to}}</li>
+      
+         </ul>
+      {{#if completed.length}}
+        <button class="clear-completed" onclick={{action "clearCompleted"}}>Clear completed</button>
+      {{/if}}
+    </footer>
+  {{/if}}
+</section>
+<footer class="info">
+  <p>Double-click to edit a task</p>
+</footer>
